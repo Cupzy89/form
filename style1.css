@@ -10,9 +10,9 @@ h2 {
 .login {
   padding: 1%;
   margin: 1em auto;
-  width: 10em;
+  width: 20em;
   background: #eb1c0d;
-  border-radius: 5cap;
+  border-radius: 3cap;
 }
 
 label {
