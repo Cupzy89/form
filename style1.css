@@ -8,11 +8,12 @@ h2 {
 }
  
 .login {
-  padding: 3%;
-  margin: 2em auto;
-  width: 20em;
-  background: #eb1c0d;
-  border-radius: 10cap;
+  padding: 20px 40 px;
+  margin: 100px auto;
+  width: 300px;
+  background: #f7890c;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba (0, 0, 0, 1);
 }
 
 label {
