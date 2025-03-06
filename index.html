@@ -1,53 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <marquee direction="right"><h3>Selamat datang</h3></marquee>
-        <marquee width="800"><img src="APPBG.PNG" height="100"></marquee>
-    </body>
+	<meta charset="UFT-8">	
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>Login Form</title>
 	<link rel="stylesheet" type="text/css" href="style1.css">
-<style>
-   {
-      background-attachment: fixed;
-      color: crimson;
-      font-synthesis-style: sans-serif;
-      text-emphasis: circle;
-      width: 70%;
-      margin-top: auto;
-      padding: 20px
-  }
-
-  body
-  {
-      background-image: white;
-      background-repeat: no-repeat
-      background-size: cover
-  }
-</style>
 </head>
 <body>
-	<br>
-    <br/>
-	<br/>
+	<marquee direction="right"><h3>Selamat datang</h3></marquee>
+        <marquee width="800"><img src="APPBG.PNG" height="100"></marquee>
 	<center><h1><font color="black">FORM TRANSAKSI</font></h1></center>	
-	<br/>
-	<div class="login">
-	<br/>
-		<form action="login.php" method="post" onSubmit="return validasi()">
-			<div>
-				<label><h3>Username:</h3></label>
-				<input type="text" name="username" placeholder="Username / NIK" class="box1 border1" required="">
-			</div>
-			<div>
-				<label><h3>Password:</h3></label>
-				<input type="password" name="password" placeholder="Password" class="box1 border2" required="">
-			</div>			
-			<div>
-				<input type="submit" value="Login" class="tombol">
-			</div>
+	<div class="login-container">
+	<h2>Silahkan Login</h2>
+    	<form action="#" method="post">
+        <label for="username">Nama pengguna:</label>
+        <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna" required>
+        
+        <label for="password">Kata sandi:</label>
+        <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" required>
+        <label>
+            <input type="checkbox" name="remember"> Ingat saya
+          </label>
+          <button type="submit">Login</button>
+          <p><a href="#">Lupa kata sandi Anda?</a></p>
+          <p>Belum punya akun? <a href="#">Daftar sekarang</a>.</p>
 		</form>
 	</div>
 </body>
