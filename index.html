@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang ="id">
 <head>
-	<meta charset="UFT-8">	
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>Login Form</title>
-	<link rel="stylesheet" type="text/css" href="style1.css">
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-	<marquee direction="right"><h3>Selamat datang</h3></marquee>
-        <marquee width="800"><img src="APPBG.PNG" height="100"></marquee>
-	<center><h1><font color="black">FORM TRANSAKSI</font></h1></center>	
-	<div class="login-container">
-	<h2>Silahkan Login</h2>
-    	<form action="#" method="post">
+    <marquee direction="#"><h3>SELAMAT DATANG</h3></marquee>
+    <marquee width="100"><img src="APP.PNG" height="90"></marquee>
+    <div class="login-container">
+    <h2>Silahkan Login</h2>
+    <form action="#" method="post">
         <label for="username">Nama pengguna:</label>
         <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna" required>
         
@@ -24,21 +23,7 @@
           <button type="submit">Login</button>
           <p><a href="#">Lupa kata sandi Anda?</a></p>
           <p>Belum punya akun? <a href="#">Daftar sekarang</a>.</p>
-		</form>
-	</div>
+    </form>
+    </div>
 </body>
- 
-<script type="text/javascript">
-	function validasi() {
-		var username = document.getElementById("username").value;
-		var password = document.getElementById("password").value;		
-		if (username != "" && password!="") {
-			return true;
-		}else{
-			alert('Username dan Password harus di isi !');
-			return false;
-		}
-	}
- 
-</script>
 </html>
