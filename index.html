@@ -3,6 +3,48 @@
 <head>
     <meta charset="UFT-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Pendaftaran</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; }
+        .register-container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); width: 350px; text-align: center; }
+        .register-container h2 { margin-bottom: 20px; color: #333; }
+        .register-container input[type="text"], .register-container input[type="email"], .register-container input[type="password"] { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .register-container button { width: 100%; padding: 12px; background-color: #007bff; border: none; color: white; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .register-container button:hover { background-color: #0056b3; }
+        .error-message { color: red; font-size: 12px; margin-top: -8px; margin-bottom: 10px; text-align: left; display: none; }
+    </style>
+    <body>
+    <div class="register-container">
+        <h2>Daftar Akun Baru</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <input type="text" id="username" name="username" placeholder="Nama Pengguna" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Kata Sandi" required>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Konfirmasi Kata Sandi" required>
+            <div id="password-error" class="error-message"></div>
+            <button type="submit">Daftar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('password-error');
+
+            if (password !== confirmPassword) {
+                passwordError.textContent = "Konfirmasi kata sandi tidak cocok!";
+                passwordError.style.display = 'block';
+                event.preventDefault(); // Mencegah form dikirim jika ada kesalahan
+            } else {
+                passwordError.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="antrian2.php">
@@ -28,5 +70,6 @@
     </div>
 </body>
 </html>
+
 
 
