@@ -1,52 +1,36 @@
 <?php
+$servername = "localhost";
+$username = "root"; // Sesuaikan dengan nama pengguna database Anda
+$password = "";     // Sesuaikan dengan kata sandi database Anda
+$dbname = "nama_database_anda"; // Ubah dengan nama database yang Anda buat
 
-require 'vendor/autoload.php';
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-use PhpOffice\PhpSpreadsheet\IOFactory;
-
-
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "nama_database";
-$conn = mysqli_connect($host, $username, $password, $database);
-
-if(isset($_POST['upload'])){
-    $file_excel = $_FILES['file_excel']['name'];
-    $ekstensi = pathinfo($file_excel, PATHINFO_EXTENSION);
-    $tmp_file = $_FILES['file_excel']['tmp_name'];
-
-    
-    if($ekstensi == 'xls' || $ekstensi == 'xlsx'){
-        
-        $target_dir = "temp_uploads/";
-        $target_file = $target_dir . basename($file_excel);
-        move_uploaded_file($tmp_file, $target_file);
-
-        
-        $spreadsheet = IOFactory::load($target_file);
-        $sheet = $spreadsheet->getActiveSheet();
-        $row_terbaca = $sheet->getHighestRow();
-
-        $success_count = 0;
-        for ($row = 2; $row <= $row_terbaca; $row++) {
-            
-            $nama = $sheet->getCell('A'.$row)->getValue();
-            $email = $sheet->getCell('B'.$row)->getValue();
-            $telepon = $sheet->getCell('C'.$row)->getValue();
-
-            
-            $sql = "INSERT INTO nama_tabel (nama, email, telepon) VALUES ('$nama', '$email', '$telepon')";
-            if (mysqli_query($conn, $sql)) {
-                $success_count++;
-            }
-        }
-
-        unlink($target_file);
-
-        echo "Data berhasil diimpor. Jumlah baris yang berhasil diunggah: " . $success_count;
-    } else {
-        echo "Format file tidak valid. Harap unggah file Excel (.xls atau .xlsx).";
-    }
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
 }
+
+$username = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+if (empty($username) || empty($email) || empty($password)) {
+    echo "Semua kolom harus diisi.";
+    exit();
+}
+
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+$sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sss", $username, $email, $hashed_password);
+
+if ($stmt->execute()) {
+    echo "Pendaftaran berhasil! <a href='login.html'>Silakan masuk</a>";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$conn->close();
 ?>
